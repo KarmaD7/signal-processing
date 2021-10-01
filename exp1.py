@@ -7,7 +7,7 @@ import imageio
 from matplotlib.pyplot import cm
 
 # TODO: 1. Change N_Fourier to 2, 4, 8, 16, 32, 64, 128, get visualization results with differnet number of Fourier Series
-N_Fourier = 64
+N_Fourier = 128
 
 # TODO: optional, implement visualization for semi-circle
 signal_name = "square"
@@ -18,14 +18,15 @@ signal_name = "square"
 # n = 2 * m - 1(m >= 1), return bm; n = 2 * m(m >= 1), return am. 
 def fourier_coefficient(n):
     if n == 0:
-        
-    elif n % 2 == 0:
-
+        return 0.5
+    elif n % 4 == 1:
+        return 2 / (((n >> 1) + 1) * math.pi)
     else:
+        return 0
 
 # TODO: 3. implement the signal function
 def square_wave(t):
-    return 
+    return 0.5 * np.sign(math.sin(t)) + 0.5
 
 # TODO: optional. implement the semi circle wave function
 def semi_circle_wave(t):
@@ -88,7 +89,7 @@ def visualize():
         plt.plot([time, point_pos_array[-1][0]], [f_t, point_pos_array[-1][1]], '-', color = 'r')
         plt.gca().set_aspect('equal', adjustable='box')
         plt.savefig(os.path.join(signal_name, "{}.png".format(i)))
-        plt.show()
+        # plt.show()
         plt.close()
         
     images = []
