@@ -1,5 +1,6 @@
 .vscode
 .DS_Store
+audio/
 *.png
 *.mp4
 *.pdf
